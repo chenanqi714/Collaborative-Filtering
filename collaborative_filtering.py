@@ -43,8 +43,8 @@ for row in testing_data.itertuples():
     test_data_matrix[row[1]-1, row[2]-1] = row[3]
 
 #take only the first 10000 users and 10000 books since data too large
-train_data_matrix=train_data_matrix[:10000,:10000]
-test_data_matrix=test_data_matrix[:10000,:10000]
+train_data_matrix=train_data_matrix[:5000,:10000]
+test_data_matrix=test_data_matrix[:5000,:10000]
 
 #calculate the pairwise distance for all users and books
 user_similarity = pairwise_distances(train_data_matrix, metric='cosine')
@@ -57,3 +57,8 @@ user_prediction = predict(train_data_matrix, user_similarity, type='user')
 #calculate the errors
 print ('User-based Root mean square error: ' + str(rmse(user_prediction, test_data_matrix)))
 print ('Item-based Root mean square error: ' + str(rmse(book_prediction, test_data_matrix)))
+book_prediction=book_prediction[test_data_matrix.nonzero()]
+test_data_matrix = test_data_matrix[test_data_matrix.nonzero()]
+print(np.amax(book_prediction))
+print(test_data_matrix)
+print(len(test_data_matrix))
