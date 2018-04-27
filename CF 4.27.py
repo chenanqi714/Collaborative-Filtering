@@ -168,3 +168,18 @@ def CF(data, train_test_size, similarity_function):
     print ('Item-based Root mean square error: ' + str(rmse(result_item, test_data_matrix)))
 
 
+###############################Testing################################
+
+CF(data, 0.2, 'Cosine')
+
+CF(data, 0.2, 'Pearson')
+
+CF(data, 0.2, 'Jaccard')
+
+CF(data, 0.3, 'Cosine')
+
+CF(data, 0.5, 'Cosine')
+
+CF(data, 0.7, 'Cosine')
+
+CF(data, 0.9, 'Cosine')
